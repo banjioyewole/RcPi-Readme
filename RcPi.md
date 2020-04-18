@@ -2,10 +2,10 @@
 `In Plain English`
 
 ### Major Keys 🔑
+This will only work on a Raspberry Pi already has required components installed for the `mavlink-router` and `adaptive-streaming`, Links to which are provided below. RcPi has all required components installed ✅
+
 When connected to 'Lambda Group', RcPi has ip address `192.168.1.27`.
 
-
-### Please Read
 `<LTE-IP-ADDRESS>`  or similar means replace everything _including_ the brackets
 
 To Open a Shell in the RcPi execute `ssh pi@192.168.1.27`
@@ -45,7 +45,7 @@ Navigate to Application Settings > General > (Scroll To)  Video
 
 `RSTP URL` should be set to  `rtsp://192.168.1.27:8554/cam0` or similar (wait at least 1 minute before trying a new URL if it doesn't work )
 
-####  Note ⚠️
+####  Additional Notes ⚠️
 I think RcPi may only support one stream client at a time
 Video streaming is more ficle than Telemetry, only try video streaming setup after you've gotten Telemetry up and running.
 Wait one (1) minute before trying a different `RSTP URL` If  `cam0` doesn't work after a minute, you should try `cam1` through `cam3` as well. 
