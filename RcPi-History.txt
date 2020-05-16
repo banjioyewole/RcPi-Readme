@@ -1,0 +1,228 @@
+➜  ~ alias | grep pi
+RcPi='ssh pi@192.168.1.27'
+adbw='./adb tcpip 5555'
+gcp='git cherry-pick'
+gcpa='git cherry-pick --abort'
+gcpc='git cherry-pick --continue'
+➜  ~ RcPi
+Linux RCPi 4.19.97-v7+ #1294 SMP Thu Jan 30 13:15:58 GMT 2020 armv7l
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sat Apr 18 16:01:24 2020
+pi@RCPi:~ $ ifconfig
+eth0: flags=4099<UP,BROADCAST,MULTICAST>  mtu 1500
+        ether b8:27:eb:5e:36:0e  txqueuelen 1000  (Ethernet)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+eth1: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.8.100  netmask 255.255.255.0  broadcast 192.168.8.255
+        inet6 fe80::3038:c682:e29b:2902  prefixlen 64  scopeid 0x20<link>
+        ether 0c:5b:8f:27:9a:64  txqueuelen 1000  (Ethernet)
+        RX packets 94  bytes 41025 (40.0 KiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 29  bytes 3935 (3.8 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+lo: flags=73<UP,LOOPBACK,RUNNING>  mtu 65536
+        inet 127.0.0.1  netmask 255.0.0.0
+        inet6 ::1  prefixlen 128  scopeid 0x10<host>
+        loop  txqueuelen 1000  (Local Loopback)
+        RX packets 0  bytes 0 (0.0 B)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 0  bytes 0 (0.0 B)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
+        inet 192.168.1.27  netmask 255.255.255.0  broadcast 192.168.1.255
+        inet6 fe80::e5e3:379f:cd75:3e5b  prefixlen 64  scopeid 0x20<link>
+        ether b8:27:eb:0b:63:5b  txqueuelen 1000  (Ethernet)
+        RX packets 5958  bytes 1922406 (1.8 MiB)
+        RX errors 0  dropped 0  overruns 0  frame 0
+        TX packets 137  bytes 20261 (19.7 KiB)
+        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0
+
+pi@RCPi:~ $ history 
+    1  sudo raspi-config
+    2  sudo apt-get update
+    3  sudo apt-get install python3-dev python3-opencv python3-wxgtk3.0 libxml2-dev python3-pip python3-matplotlib python3-lxml
+    4  sudo apt-get install python3-dev python3-opencv libxml2-dev python3-pip python3-matplotlib python3-lxml
+    5  sudo apt-get install python3-wxgtk3.0
+    6  sudo apt-get install python-wxgtk3.0
+    7  sudo pip3 install future
+    8  sudo pip3 install pymavlink
+    9  sudo pip3 install mavproxy
+   10  sudo raspi-config
+   11  sudo reboot
+   12  sudo chown -R pi /home/pi
+   13  nano /etc/mavlink-router/config.d
+   14  sudo nano /etc/mavlink-router/config.d
+   15  mkdir etc/mavlink-router/
+   16  mkdir /etc/mavlink-router/
+   17  sudo mkdir /etc/mavlink-router/
+   18  sudo nano /etc/mavlink-router/config.d
+   19  cd ./Desktop/
+   20  git clone https://github.com/intel/mavlink-router.git
+   21  cd ./mavlink-router/
+   22  git submodule update --init --recursive
+   23  ./autogen.sh && ./configure CFLAGS='-g -O2'         --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib64     --prefix=/usr
+   24  make
+   25  make install
+   26  sudo make install
+   27  make DESTDIR=/tmp/root/dir install
+   28  sudo shutdown
+   29  sudo shutdown -h now
+   30  g
+   31  exit
+   32  raspivid -t 0 -h 720 -w 1080 -fps 30 -b 8000000 --intra 10 -sl 8 -hf --penc -o - | gst-launch-1.0 -v fdsrc ! video/x-h264, width=1080,height=720,framerate=30/1 ! h264parse ! rtph264pay ! udpsink host=192.168.1.25 port=5600
+   33  ifconfig
+   34  sudo apt-get install mplayer netcat
+   35  cd /opt/vc/src/hello_pi
+   36  make –C libs/ilclient
+   37  ls
+   38  make –C ./libs/ilclient
+   39  raspivid -t 0 -cd MJPEG -w 1280 -h 720 -fps 40 -b 8000000 -o - | gst-launch-1.0 fdsrc ! "image/jpeg,framerate=40/1" ! jpegparse ! rtpjpegpay ! udpsink host=<client_ip> port=<client_port>
+   40  raspivid -t 0 -cd MJPEG -w 1280 -h 720 -fps 40 -b 8000000 -o - | gst-launch-1.0 fdsrc ! "image/jpeg,framerate=40/1" ! jpegparse ! rtpjpegpay ! udpsink host=192.168.1.25 port=4261
+   41  raspistill -o Desktop/image.jpg
+   42  scp Desktop/image.jpg 192.168.1.25:/
+   43  scp Desktop/image.jpg ffapp1@192.168.1.25:/
+   44  scp Desktop/image.jpg ffapp1@192.168.1n.25:~/
+   45  scp Desktop/image.jpg ffapp1@192.168.1.25:~/
+   46  mavlink-routerd -e 127.0.0.1:14550 /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   47  mavlink-routerd -e 127.0.0.1:14550 -e 192.168.1.27 ::14550 /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   48  mavlink-routerd -e 127.0.0.1:14550 -e 192.168.1.27:14550 /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   49  mavlink-routerd -e 127.0.0.1:14550 -e 190.0.0.0:14550 /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   50  mavlink-routerd -e/dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   51  mavlink-routerd /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   52  mavlink-routerd -e 0.0.0.0:14550 /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   53  sudo reboot
+   54  cd ./Desktop/
+   55  ls
+   56  cd ./adaptive-streaming/
+   57  ls
+   58  cd ./build/
+   59  ls
+   60  cd ./APWeb/
+   61  ls
+   62  sudo ./web_server -p 80
+   63  history | grep libtalloc
+   64  histoory
+   65  history
+   66  ls /dev/
+   67  ls /dev/v4l/
+   68  ls /dev/v4l/by-path/
+   69  /etc/module
+   70  /etc/modules
+   71  ls /etc/modules
+   72  ls /etc/modules/
+   73  nano /etc/modules
+   74  sudo nano /etc/modules
+   75  sudo reboot
+   76  cd ./Desktop/
+   77  ls
+   78  cd ./Desktop/
+   79  raspivid -o video.h264 -t 10000
+   80  scp Desktop/video.h264 ffapp1@192.168.1.25:~/
+   81  scp ./video.h264 ffapp1@192.168.1.25:~/
+   82  cd ./Desktop/adaptive-streaming/build/APWeb/
+   83  sudo ./web_server -p 80
+   84  ls
+   85  cd .
+   86  ks
+   87  ls
+   88  cd ..
+   89  ls
+   90  ./stream_server
+   91  sudo ./stream_server
+   92  raspivid -t 0 -h 720 -w 1080 -fps 30 -b 8000000 --intra 10 -sl 8 -hf --penc -o - | gst-launch-1.0 -v fdsrc ! video/x-h264, width=1080,height=720,framerate=30/1 ! h264parse ! rtph264pay ! udpsink host=192.168.1.25 port=5600
+   93  ls
+   94  sudo ./stream_server
+   95  mavlink-routerd -e 0.0.0.0:14550 /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+   96  cd ./Desktop/adaptive-streaming/build/
+   97  ls
+   98  cd ./APWeb/
+   99  ls
+  100  sudo ./web_server -p 80
+  101  sudo pip install pymavlink
+  102  sudo pip3 install pymavlink
+  103  sudo raspi-config
+  104  ifconfig
+  105  ./stream_server wlan0
+  106  ls
+  107  cd ..
+  108  ....
+  109  cd ..
+  110  ls
+  111  cd ..
+  112  ls
+  113  cd ./adaptive-streaming/
+  114  ls
+  115  cd ./build/
+  116  ls
+  117  ./stream_server wlan0
+  118  ./stream_server l0
+  119  ./stream_server lo
+  120  ./stream_server
+  121  sudo reboot
+  122  ls
+  123  cd ./Desktop/
+  124  ls
+  125  cd ./adaptive-streaming/
+  126  ls
+  127  ls 
+  128  cd ./src/
+  129  ls
+  130  cd ..
+  131  ls
+  132  cd ./build/
+  133  ls
+  134  sudo ./stream_server
+  135  ifconfig
+  136  sudo ./stream_server wlan0
+  137  pwd
+  138  cd ./Desktop/
+  139  git clone -b video_streaming https://github.com/shortstheory/APWeb.git
+  140  cd APWeb
+  141  sudo apt-get install libtalloc-dev
+  142  git submodule update --init --recursive
+  143  ls
+  144  make
+  145  nano Makefile 
+  146  make
+  147  sudo ./web_server -p 80
+  148  ./web_server -p 80 -s /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v2.x_0-if00
+  149  ./web_server -p 80 -s  /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+  150  ./web_server -p 80 -s /dev/serial/by-id/usb-3D_Robotics_PX4_FMU_v5.x_0-if00
+  151  history
+  152  sudo shutdown
+  153  sudo shutdown -h now
+  154  history
+  155  cd ./Desktop/
+  156  ls
+  157  cd ./adaptive-streaming/
+  158  ls
+  159  cd ./build/
+  160  ls
+  161  cd ~/Desktop/
+  162  rm -rf ./adaptive-streaming/
+  163  ls
+  164  rm image.jpg 
+  165  rm video.h264 
+  166  ls
+  167  git clone https://github.com/shortstheory/adaptive-streaming.git
+  168  cd ./adaptive-streaming/
+  169  ls
+  170  meson build
+  171  cd build
+  172  meson configure -Dprefix=$HOME/start_apstreamline/
+  173  ninja install
+  174  sudo modprobe bcm2835-v4l2
+  175  ifconfig
+  176  history
